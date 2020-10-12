@@ -30,7 +30,7 @@ axios.get('/user/setting')
 
   export let  socket
 
-function Layout({children}) {
+function Layout({children,title,description,img}) {
   useEffect(() => {
     if (token) {
 
@@ -78,7 +78,7 @@ function Layout({children}) {
 
 
 
-  const { user, authenticated } = useSelector(state => state.auth)
+  const { user, authenticated ,setting } = useSelector(state => state.auth)
   const dispatch = useDispatch()
   useEffect(() => {
     if (authenticated) {
@@ -124,7 +124,18 @@ function Layout({children}) {
     return (
         <>
         <Head>
-          <title>Create Next App</title>
+        <title>{title ? title :setting.general && setting.general.title }</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="description" content={description ? description :setting.general && setting.general.meta }></meta>
+ 
++       <meta property="og:title" content={title ? title :setting.general && setting.general.title} key="ogtitle" />
++       <meta property="og:description" content={description ? description :setting.general && setting.general.meta} key="ogdesc" />
+        <meta property="og:url" content='https://next-naisaa.vercel.app' key="ogurl" />
+        <meta property="og:image" content={img ? img : "https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png"} key="ogimage" />
+        <meta property="og:site_name" content='Naisaa' key="ogsitename" />
+
+
           <link rel="icon" href="/favicon.ico" />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />

@@ -67,7 +67,7 @@ function OrderDetails() {
     const [sendfileprogress, setsendfileprogress] = useState(false)
 
 
-    const { user } = useSelector(state => state.auth)
+    const { user ,setting} = useSelector(state => state.auth)
     const router = useRouter()
     const { orderid} = router.query
 
@@ -193,7 +193,11 @@ function OrderDetails() {
 
      }, [socket, msgList])
     return (
-        <Layout>
+        <Layout
+        title={`Order for ${gig && gig.title}`}
+        description={setting.general && setting.general.meta}  
+        img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'
+        >
         <div className='service_wrapper'>
 
           

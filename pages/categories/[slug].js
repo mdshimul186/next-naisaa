@@ -73,7 +73,10 @@ function CatService() {
 
     return (
         <>
-        <Layout>
+        <Layout 
+        title={seo && seo.seotitle} 
+        description={seo && seo.seometa} 
+        img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'>
         <ServiceLayout title=''>
         {
             load ? <CircularProgress style={{margin:"10px auto"}} /> :

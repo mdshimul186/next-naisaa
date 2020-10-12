@@ -52,41 +52,12 @@ function GigDetails({gigs}) {
      
 
     return (
-        <Layout >
-        {gig && 
-         <NextSeo
-      title={gig.seo.seotitle}
-      description={gig.seo.seometa}
-      canonical="https://www.canonical.ie/"
-      openGraph={{
-        url: 'https://www.url.ie/a',
-        title: gig.seo.seotitle,
-        description: gig.seo.seometa,
-        images: [
-          {
-            url: gig.thumbnail,
-            width: 800,
-            height: 600,
-            alt: 'Og Image Alt',
-          },
-          {
-            url: gig.thumbnail,
-            width: 900,
-            height: 800,
-            alt: 'Og Image Alt Second',
-          },
-          { url: gig.thumbnail },
-          { url: gig.thumbnail },
-        ],
-        site_name: 'SiteName',
-      }}
-      twitter={{
-        handle: '@handle',
-        site: '@site',
-        cardType: 'summary_large_image',
-      }}
-    />
-    }
+        <Layout 
+         title={gig && gig.seo.seotitle} 
+        description={gig && gig.seo.seometa} 
+        img={gig && gig.thumbnail}
+        >
+       
 
 
         <div className='service_wrapper'>

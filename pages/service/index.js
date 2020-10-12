@@ -7,7 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core'
 import Layout from '../../components/Layout'
 import { useRouter } from 'next/router'
-
+import {useSelector} from 'react-redux'
 function Allgigs() {
     const [gigs, setGigs] = useState([])
     const [load, setload] = useState(false)
@@ -17,6 +17,8 @@ function Allgigs() {
 
     const router = useRouter()
     const { slug, search } = router.query
+
+    const { setting } = useSelector(state => state.auth)
 
 
     
@@ -75,7 +77,11 @@ function Allgigs() {
 
     return (
         <div>
-        <Layout>
+        <Layout
+        title={setting.general && setting.general.title} 
+        description={setting.general && setting.general.meta} 
+        img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'
+        >
             <ServiceLayout title="All">
 
                 {
