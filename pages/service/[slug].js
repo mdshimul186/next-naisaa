@@ -11,8 +11,11 @@ import Rating from '@material-ui/lab/Rating';
 import Layout from '../../components/Layout'
 
 import Head from 'next/head'
+import { NextSeo } from 'next-seo';
 
-function GigDetails() {
+
+
+function GigDetails({gigs}) {
     const [gig, setGig] = useState(null)
     const [checkout, setCheckout] = useState(false)
     const [count, setCount] = useState(0)
@@ -46,16 +49,44 @@ function GigDetails() {
         }
     }
 
-
+     
 
     return (
         <Layout >
-         <Head>
-            <title>{gig && gig.seo.seotitle}</title>
-            <meta name="description" content={gig && gig.seo.seometa} />
-            
+         <NextSeo
+      title="Using More of Config"
+      description="This example uses more of the available config options."
+      canonical="https://www.canonical.ie/"
+      openGraph={{
+        url: 'https://www.url.ie/a',
+        title: 'Open Graph Title',
+        description: 'Open Graph Description',
+        images: [
+          {
+            url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg',
+            width: 800,
+            height: 600,
+            alt: 'Og Image Alt',
+          },
+          {
+            url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg',
+            width: 900,
+            height: 800,
+            alt: 'Og Image Alt Second',
+          },
+          { url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg' },
+          { url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg' },
+        ],
+        site_name: 'SiteName',
+      }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+      }}
+    />
 
-        </Head>
+
         <div className='service_wrapper'>
            
             <div className='row mt-3'>
