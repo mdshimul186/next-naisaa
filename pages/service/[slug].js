@@ -53,29 +53,30 @@ function GigDetails({gigs}) {
 
     return (
         <Layout >
+        {gig && 
          <NextSeo
-      title="Using More of Config"
-      description="This example uses more of the available config options."
+      title={gig.seo.seotitle}
+      description={gig.seo.seometa}
       canonical="https://www.canonical.ie/"
       openGraph={{
         url: 'https://www.url.ie/a',
-        title: 'Open Graph Title',
-        description: 'Open Graph Description',
+        title: gig.seo.seotitle,
+        description: gig.seo.seometa,
         images: [
           {
-            url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg',
+            url: gig.thumbnail,
             width: 800,
             height: 600,
             alt: 'Og Image Alt',
           },
           {
-            url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg',
+            url: gig.thumbnail,
             width: 900,
             height: 800,
             alt: 'Og Image Alt Second',
           },
-          { url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg' },
-          { url: 'https://www.naisaa.com/wp-content/uploads/elementor/thumbs/4129701-scaled-ovqcwmo3r15hllqe60auwy63qaztz83848i3yfq43o.jpg' },
+          { url: gig.thumbnail },
+          { url: gig.thumbnail },
         ],
         site_name: 'SiteName',
       }}
@@ -85,6 +86,7 @@ function GigDetails({gigs}) {
         cardType: 'summary_large_image',
       }}
     />
+    }
 
 
         <div className='service_wrapper'>
