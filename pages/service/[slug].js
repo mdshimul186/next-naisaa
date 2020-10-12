@@ -53,9 +53,9 @@ function GigDetails() {
          <Head>
             <title>{gig && gig.seo.seotitle}</title>
             <meta name="description" content={gig && gig.seo.seometa} />
-            <meta property="og:type" content="website"></meta>
-            <meta property="og:url" content="https://naisaa.com/"></meta>
-            <meta property="og:image" content={gig && gig.thumbnail}></meta>
+            <meta name="og:type" content="website"></meta>
+            <meta name="og:url" content="https://naisaa.com/"></meta>
+            <meta name="og:image" content={gig && gig.thumbnail}></meta>
 
         </Head>
         <div className='service_wrapper'>
