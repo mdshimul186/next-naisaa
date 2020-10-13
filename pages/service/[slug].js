@@ -57,21 +57,7 @@ function GigDetails({gigs}) {
          description={gigs.seo && gigs.seo.seometa} 
      img={gigs && gigs.thumbnail}
         >
-         {/* <Head>
-        <title>{gigs.seo && gigs.seo.seotitle}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-        <meta name="description" content={gigs.seo && gigs.seo.seometa }></meta>
- 
-+       <meta property="og:title" content={gigs.seo && gigs.seo.seotitle} key="ogtitle" />
-+       <meta property="og:description" content={gigs.seo && gigs.seo.seometa} key="ogdesc" />
-        <meta property="og:url" content='https://next-naisaa.vercel.app' key="ogurl" />
-        <meta property="og:image" content={gigs && gigs.thumbnail} key="ogimage" />
-        <meta property="og:site_name" content='Naisaa' key="ogsitename" />
-
-
-         
-        </Head>  */}
+        
        
 
 

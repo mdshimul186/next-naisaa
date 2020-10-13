@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
 
 
-function CatService() {
+function CatService({seo}) {
 
     const router = useRouter()
   const { slug, search } = router.query
@@ -21,7 +21,7 @@ function CatService() {
  const [loadmore, setLoadmore] = useState(false)
  const [showloadmore, setShowLoadmore] = useState(false)
     const [page, setPage] = useState(0)
-    const [seo, setseo] = useState({})
+    //const [seo, setseo] = useState({})
 
 
 
@@ -51,7 +51,7 @@ function CatService() {
     axios.get(`/gig/get/${slug}?search=${text}&page=0`)
     .then(res=>{
         
-        res.data.gig.length > 0 && setseo(res.data.gig[0].category.seo);
+        //res.data.gig.length > 0 && setseo(res.data.gig[0].category.seo);
         setGigs(res.data.gig)
         if(res.data.gig.length === 8){
             setShowLoadmore(true)
@@ -98,5 +98,18 @@ function CatService() {
         </>
     )
 }
+
+export async function getServerSideProps(context){
+ 
+    let text =   ''
+    let slug = context.params.slug
+   let res = await axios.get(`/gig/get/${slug}?search=${text}&page=0`)
+ 
+    
+
+   return {
+       props: {seo:res.data.gig.length > 0 && res.data.gig[0].category.seo},
+     };
+   }
 
 export default CatService

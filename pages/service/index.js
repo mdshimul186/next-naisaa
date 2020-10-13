@@ -77,11 +77,7 @@ function Allgigs() {
 
     return (
         <div>
-        <Layout
-        title={setting.general && setting.general.title} 
-        description={setting.general && setting.general.meta} 
-        img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'
-        >
+        <Layout>
             <ServiceLayout title="All">
 
                 {

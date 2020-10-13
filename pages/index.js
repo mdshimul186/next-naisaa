@@ -10,8 +10,8 @@ import { useSelector } from 'react-redux'
 
 
 
-export default function Home() {
-  const { setting } = useSelector(state => state.auth)
+export default function Home({setting}) {
+  
   return (
     <>
 
@@ -25,4 +25,15 @@ export default function Home() {
       </Layout>
     </>
   )
+}
+
+
+export async function getServerSideProps(){
+ 
+ let res = await axios.get('/user/setting')
+ 
+
+   return {
+       props: {setting:res.data.setting},
+     };
 }
