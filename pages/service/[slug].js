@@ -53,11 +53,11 @@ function GigDetails({gigs}) {
 
     return (
         <Layout 
-        //  title={gigs.seo.seotitle} 
-        // description={gigs.seo.seometa} 
-        // img={gigs.thumbnail}
+          title={gigs.seo && gigs.seo.seotitle} 
+         description={gigs.seo && gigs.seo.seometa} 
+     img={gigs && gigs.thumbnail}
         >
-         <Head>
+         {/* <Head>
         <title>{gigs.seo && gigs.seo.seotitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
@@ -71,7 +71,7 @@ function GigDetails({gigs}) {
 
 
          
-        </Head> 
+        </Head>  */}
        
 
 
