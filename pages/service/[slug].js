@@ -53,10 +53,25 @@ function GigDetails({gigs}) {
 
     return (
         <Layout 
-         title={gig && gig.seo.seotitle} 
-        description={gig && gig.seo.seometa} 
-        img={gig && gig.thumbnail}
+        //  title={gigs.seo.seotitle} 
+        // description={gigs.seo.seometa} 
+        // img={gigs.thumbnail}
         >
+         <Head>
+        <title>{gigs.seo && gigs.seo.seotitle}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="description" content={gigs.seo && gigs.seo.seometa }></meta>
+ 
++       <meta property="og:title" content={gigs.seo && gigs.seo.seotitle} key="ogtitle" />
++       <meta property="og:description" content={gigs.seo && gigs.seo.seometa} key="ogdesc" />
+        <meta property="og:url" content='https://next-naisaa.vercel.app' key="ogurl" />
+        <meta property="og:image" content={gigs && gigs.thumbnail} key="ogimage" />
+        <meta property="og:site_name" content='Naisaa' key="ogsitename" />
+
+
+         
+        </Head> 
        
 
 
@@ -134,6 +149,19 @@ function GigDetails({gigs}) {
         </div>
         </Layout>
     )
+}
+
+
+
+export async function getServerSideProps(context){
+ 
+   let res = await axios.get('https://naissa-api.herokuapp.com/gig/get/single/' + context.params.slug)
+ 
+    
+
+    return {
+        props: {gigs:res.data.gig},
+      };
 }
 
 export default GigDetails
