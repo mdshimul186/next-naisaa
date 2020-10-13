@@ -30,7 +30,7 @@ axios.get('/user/setting')
 
   export let  socket
 
-function Layout({children,title,description,img,setting}) {
+function Layout({children,title,description,img,setting ,url}) {
   useEffect(() => {
     if (token) {
 
@@ -131,7 +131,7 @@ function Layout({children,title,description,img,setting}) {
  
 +       <meta property="og:title" content={title ? title :setting && setting.general.title} key="ogtitle" />
 +       <meta property="og:description" content={description ? description :setting && setting.general.meta} key="ogdesc" />
-        <meta property="og:url" content='https://next-naisaa.vercel.app' key="ogurl" />
+        <meta property="og:url" content={url ? "https://next-naisaa.vercel.app"+url : "https://next-naisaa.vercel.app"} key="ogurl" />
         <meta property="og:image" content={img ? img : "https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png"} key="ogimage" />
         <meta property="og:site_name" content='Naisaa' key="ogsitename" />
 

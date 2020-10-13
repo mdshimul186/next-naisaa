@@ -25,6 +25,7 @@ function GigDetails({gigs}) {
     
     const router = useRouter()
   const { slug} = router.query
+  console.log(router);
     
 
     const dispatch = useDispatch()
@@ -56,6 +57,7 @@ function GigDetails({gigs}) {
           title={gigs.seo && gigs.seo.seotitle} 
          description={gigs.seo && gigs.seo.seometa} 
      img={gigs && gigs.thumbnail}
+     url ={router.asPath}
         >
         
        
