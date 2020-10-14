@@ -31,7 +31,7 @@ function Allgigs() {
         axios.get(`/gig/get?search=${text}&page=${page}`)
             .then(res => {
                 setGigs([...gigs, ...res.data.gig])
-                console.log(res.data.gig);
+                
                 if (res.data.gig.length === 8) {
                     setShowLoadmore(true)
                     setPage(page + 1)
@@ -48,7 +48,7 @@ function Allgigs() {
 
 
     useEffect(() => {
-        console.log(text);
+      
         setload(true)
         axios.get(`/gig/get?search=${text}&page=0`)
             .then(res => {

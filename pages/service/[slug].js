@@ -15,30 +15,30 @@ import { NextSeo } from 'next-seo';
 
 
 
-function GigDetails({gigs}) {
-    const [gig, setGig] = useState(null)
+function GigDetails({gigs,count,author}) {
+    // const [gig, setGig] = useState(null)
     const [checkout, setCheckout] = useState(false)
-    const [count, setCount] = useState(0)
-    const [author, setAuthor] = useState({})
+    // const [count, setCount] = useState(0)
+    // const [author, setAuthor] = useState({})
 
 
     
     const router = useRouter()
   const { slug} = router.query
-  console.log(router);
+ 
     
 
     const dispatch = useDispatch()
     const { authenticated } = useSelector(state => state.auth)
 
-    useEffect(() => {
-        axios.get('/gig/get/single/' + slug)
-            .then(res => {
-                setGig(res.data.gig);
-                setCount(res.data.count);
-                setAuthor(res.data.author)
-            })
-    }, [slug])
+    // useEffect(() => {
+    //     axios.get('/gig/get/single/' + slug)
+    //         .then(res => {
+    //             setGig(res.data.gig);
+    //             setCount(res.data.count);
+    //             setAuthor(res.data.author)
+    //         })
+    // }, [slug])
 
     let handleCheckout = () => {
         if (authenticated) {
@@ -70,30 +70,30 @@ function GigDetails({gigs}) {
                     <div style={{ margin: "auto" }} className='row my-3'>
                         <div className='col-12  col-sm-12 left_col'>
                             {
-                                checkout ? <Checkout id={gig && gig._id} price={gig && gig.price} /> : <>
+                                checkout ? <Checkout id={gigs && gigs._id} price={gigs && gigs.price} /> : <>
                                     <div>
-                                        <h3 >{gig && gig.title}</h3><hr></hr>
+                                        <h3 >{gigs && gigs.title}</h3><hr></hr>
                                         <p>Webdesign and development</p>
                                     </div>
                                     <div>
-                                        <img style={{ maxWidth: "100%" }} src={gig && gig.thumbnail}></img>
+                                        <img style={{ maxWidth: "100%" }} src={gigs && gigs.thumbnail}></img>
                                     </div>
 
                                     <div className='mt-3'>
                                         <h6>Description</h6>
                                         {
-                                            gig && <p dangerouslySetInnerHTML={{ __html: gig.description }}></p>
+                                            gigs && <p dangerouslySetInnerHTML={{ __html: gigs.description }}></p>
                                         }
 
                                     </div>
                                     <div>
-                                        <button style={{ backgroundColor: "#1B8785", color: "white" }} onClick={() => handleCheckout()} className='btn btn-lg'>{`Order Now ( $${gig && gig.price} )`}</button>
+                                        <button style={{ backgroundColor: "#1B8785", color: "white" }} onClick={() => handleCheckout()} className='btn btn-lg'>{`Order Now ( $${gigs && gigs.price} )`}</button>
 
                                     </div>
                                 </>
                             }</div>
                         <div className='col-12 mt-4 left_col'>
-                            <Review gigid={gig && gig._id} />
+                            <Review gigid={gigs && gigs._id} />
                         </div>
 
 
@@ -108,26 +108,26 @@ function GigDetails({gigs}) {
 
                             <div style={{ display: "flex", justifyContent: "space-between" }}>
                                 <div className="reviewsstar">
-                                    <Rating size="small" name="half-rating-read" value={gig && Math.round((gig.star / count) * 10) / 10} precision={0.1} readOnly />
+                                    <Rating size="small" name="half-rating-read" value={gigs && Math.round((gigs.star / count) * 10) / 10} precision={0.1} readOnly />
                                     <span>({count})</span>
                                 </div>
-                                <div style={{ marginRight: "0" }} className="product-price">${gig && gig.price}.00</div>
+                                <div style={{ marginRight: "0" }} className="product-price">${gigs && gigs.price}.00</div>
                             </div><hr></hr>
 
 
                             <div >
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <p>Overall rate</p><h6>{gig && Math.round((gig.star / count) * 10) / 10}</h6>
+                                    <p>Overall rate</p><h6>{gigs && Math.round((gigs.star / count) * 10) / 10}</h6>
                                 </div>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <p>Reviews</p><h6>{count}</h6>
                                 </div>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <p>Time of delivery</p><h6>{gig && gig.delivery} Days</h6>
+                                    <p>Time of delivery</p><h6>{gigs && gigs.delivery} Days</h6>
                                 </div><hr></hr>
                             </div>
                             <div>
-                                <button style={{ backgroundColor: "#1B8785", color: "white" }} onClick={() => handleCheckout()} className='btn btn-primary btn-block'>{checkout ? 'Back' : `Order Now ( $${gig && gig.price} )`}</button>
+                                <button style={{ backgroundColor: "#1B8785", color: "white" }} onClick={() => handleCheckout()} className='btn btn-primary btn-block'>{checkout ? 'Back' : `Order Now ( $${gigs && gigs.price} )`}</button>
                             </div>
                         </div>
                         <div className='col-md-12 col-sm-12 right_col'><AuthorDetails author={author} /></div>
@@ -148,7 +148,7 @@ export async function getServerSideProps(context){
     
 
     return {
-        props: {gigs:res.data.gig},
+        props: {gigs:res.data.gig,count:res.data.count,author:res.data.author},
       };
 }
 

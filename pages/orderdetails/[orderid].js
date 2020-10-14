@@ -106,7 +106,7 @@ function OrderDetails() {
                 if (res.status == 200) {
 
                     setOrder(res.data.order)
-                    console.log(res.data.order);
+                   
                     handleClose()
                     setReview('')
                 }
@@ -135,7 +135,7 @@ function OrderDetails() {
         axios.get('/order/single/' + orderid)
             .then(res => {
                 setMsgList(res.data.msg)
-                console.log(res.data.msg);
+              
                 setGig(res.data.gig)
                 setOrder(res.data.order)
                 setCount(res.data.count);
@@ -151,7 +151,7 @@ function OrderDetails() {
         axios.put(`/order/message/${orderid}`, newMsg)
             .then(res => {
                 let last = res.data.msg[res.data.msg.length - 1]
-                console.log(last);
+               
 
                 setMsgList(res.data.msg)
                 setMsg('')
@@ -181,10 +181,10 @@ function OrderDetails() {
          socket &&
              socket.on('newordersms', data => {
                  if (data) {
-                     console.log(data);
-                     console.log(msgList);
+                    
+                   
                      setMsgList([...msgList, data])
-                     console.log(msgList);
+                    
 
                  }
 

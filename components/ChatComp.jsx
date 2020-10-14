@@ -19,7 +19,7 @@ function ChatComp({id}) {
 
 
     useEffect(() => {
-        console.log(id);
+
         axios.get('/order/single/'+id)
         .then(res=>{
             setMsgList(res.data.msg)
