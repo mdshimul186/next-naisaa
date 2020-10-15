@@ -84,7 +84,7 @@ export default function AdminLayout() {
    }
   }, [user])
   return (
-      <><Layout >
+      <><Layout footer={false} />
     <div style={{flexGrow:"1",backgroundColor:"white",display:"flex",minHeight:"100vh"}}  className={classes.root}>
     
     {
@@ -127,7 +127,7 @@ export default function AdminLayout() {
      
       </>}
     </div>
-    </Layout>
+   
     </>
     
   );

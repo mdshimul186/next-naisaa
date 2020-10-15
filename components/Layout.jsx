@@ -33,7 +33,7 @@ axios.get('/user/setting')
 
   export let  socket
 
-function Layout({children,title,description,img,setting ,url}) {
+function Layout({children,title,description,img,setting ,url,footer}) {
   //authenticate user
   useEffect(() => {
     if (token) {
@@ -149,7 +149,10 @@ function Layout({children,title,description,img,setting ,url}) {
            <>
                {children}
            </>
-           <Footer />
+           {
+             footer == false ? null :  <Footer />
+           }
+           
         </>
     )
 }
