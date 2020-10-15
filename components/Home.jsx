@@ -51,7 +51,7 @@ function HomePage() {
       <main id="main">
 
 
-        <section id="featured-services">
+        {/* <section id="featured-services">
           <div className="container ">
             <div className="row">
 
@@ -70,7 +70,7 @@ function HomePage() {
 
             </div>
           </div>
-        </section>
+        </section> */}
 
 
         <section id="about">
@@ -92,7 +92,7 @@ function HomePage() {
                           <img src={category.categoryimg} alt="" className="img-fluid" />
                         </Link>
                       </div>
-                      <h2 className="my-3"><Link href={`/categories/${category.categoryslug}`}>{category.categoryname}</Link></h2>
+                      <h2 className="my-3"><Link href={`/categories/${category.categoryslug}`}><a>{category.categoryname}</a></Link></h2>
 
                     </div>
                   </div>
@@ -180,7 +180,7 @@ function HomePage() {
         </section>
 
 
-        <section id="call-to-action">
+        {/* <section id="call-to-action">
           <div className='row'>
             <div className='col-lg-6 py-3'>
               <div className="container text-center" data-aos="zoom-in">
@@ -195,7 +195,7 @@ You don’t need to deliver any products , We will build your website and also u
               <img style={{ height: '350px', width: "90%" }} src='https://www.naisaa.com/wp-content/uploads/2020/09/7582-copy-1536x1536.jpg'></img>
             </div>
           </div>
-        </section>
+        </section> */}
 
 
 

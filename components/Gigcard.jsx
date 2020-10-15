@@ -25,13 +25,13 @@ function Gigcard({gig}) {
 		<div className="badge">{gig.status}</div>
 		<div className="product-tumb">
     <Link href={`/service/${gig.slug}`}>
-
-			<img src={gig.thumbnail} alt="" />
+    <a><img src={gig.thumbnail} alt="" /></a>
+			
       </Link>
 		</div>
 		<div className="product-details">
 			<span className="product-catagory">Naissa</span>
-			<Link href={`/service/${gig.slug}`}><p>{trimmed}</p></Link>
+			<Link href={`/service/${gig.slug}`}><a><p>{trimmed}</p></a></Link>
 			<div className="product-bottom-details">
 				
 				
