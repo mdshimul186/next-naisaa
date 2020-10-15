@@ -26,6 +26,7 @@ export default function MessageComp() {
     setAnchorEl(event.currentTarget);
   };
 
+  //count unread message
   useEffect(() => {
     if(messages){
       setmsgs(messages)
@@ -39,14 +40,14 @@ export default function MessageComp() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  //mark message read
   let markMessageRead=(msg)=>{
     axios.patch('/user/markmessageread/'+msg._id)
     .then(message=>{
       setCount(count - 1)
     })
   }
-
+  //route to push user when click messsage
   let handlePath=(msg)=>{
       handleClose()
       if(msg.isseen == user._id){

@@ -14,6 +14,7 @@ import AdminUsers from '../admin/AdminUsers';
 import AdminReviews from '../admin/AdminReviews';
 
 import Layout from '../components/Layout'
+import { useRouter } from 'next/router'
 
 
 
@@ -64,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AdminLayout() {
+  let router = useRouter()
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const {authenticated,user} = useSelector(state=>state.auth)
@@ -71,6 +73,8 @@ export default function AdminLayout() {
     setValue(newValue);
   };
   const [access, setAccess] = useState(false)
+
+
 
   useEffect(() => {
    if(authenticated){
@@ -80,7 +84,7 @@ export default function AdminLayout() {
    }
   }, [user])
   return (
-      <><Layout />
+      <><Layout >
     <div style={{flexGrow:"1",backgroundColor:"white",display:"flex",minHeight:"100vh"}}  className={classes.root}>
     
     {
@@ -100,7 +104,7 @@ export default function AdminLayout() {
         <Tab label="Orders" {...a11yProps(3)} />
         <Tab label="Users" {...a11yProps(4)} />
         <Tab label="Reviews" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} />
+       
       </Tabs>
       <TabPanel style={{width:"100%",zIndex:"11"}} value={value} index={0}>
         <AdminHome />
@@ -120,12 +124,10 @@ export default function AdminLayout() {
       <TabPanel style={{width:"100%",zIndex:"11"}} value={value} index={5}>
         <AdminReviews />
       </TabPanel>
-      <TabPanel style={{width:"100%",zIndex:"11"}} value={value} index={6}>
-        Item Seven
-      </TabPanel>
+     
       </>}
     </div>
-    
+    </Layout>
     </>
     
   );

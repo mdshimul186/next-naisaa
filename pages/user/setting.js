@@ -17,7 +17,7 @@ function EditProfile() {
     const [newPassword, setnewPassword] = useState('')
     const [confirmPassword, setconfirmPassword] = useState('')
 
-    const {user,profile} = useSelector(state => state.auth)
+    const {user,profile,authenticated} = useSelector(state => state.auth)
     const dispatch = useDispatch()
 
     let saveCountry=()=>{
@@ -56,9 +56,9 @@ function EditProfile() {
         setcountry(profile.country)
     }, [profile])
     return (
-        <div>
+      <div>
         
-            <ProfileLayout title="Profile">
+        {!authenticated  ? <p>Not authorized</p> : <ProfileLayout title="Profile">
                 <div className='p-4' style={{backgroundColor:"white"}}>
                 <FormControl >
         <InputLabel htmlFor="age-native-simple">Country</InputLabel>
@@ -366,7 +366,7 @@ function EditProfile() {
           
           
    
-            </ProfileLayout>
+            </ProfileLayout>}
         </div>
     )
 }

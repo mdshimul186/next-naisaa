@@ -60,6 +60,7 @@ function Nvabarcomp() {
     const dispatch = useDispatch()
     const {authenticated,signin,signup,setting} = useSelector(state=>state.auth)
 
+      //save new user to database
     let handleSignup =()=>{
       let newUser = {
         email,
@@ -90,7 +91,7 @@ function Nvabarcomp() {
       
     }
 
-
+    //authenticate user
     let signinHandler=(e)=>{
       setload(true)
       
@@ -121,6 +122,7 @@ function Nvabarcomp() {
       })
     }
 
+    //logic to show or close signup and signin model
     const handleClose = () => {
       dispatch({
         type:'HIDE_SIGNIN'
@@ -171,7 +173,7 @@ function Nvabarcomp() {
               {
                 authenticated && <li><Link href='/user/orders'><a>My orders</a></Link></li>
               }            
-              <li><Link href="/"><a>Support</a></Link></li>
+              <li><Link href="/support"><a>Support</a></Link></li>      
  
             </ul></div>}
         open={sidebarOpen}
@@ -190,7 +192,7 @@ function Nvabarcomp() {
       >
         
       </Sidebar>
-        
+        {/* dialogue to signin */}
         <Modal show={signin} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Sign in</Modal.Title>
@@ -242,7 +244,7 @@ function Nvabarcomp() {
             </Button>
           </Modal.Footer>
         </Modal>
-
+        {/* dialogue to register */}
         <Modal show={signup} onHide={handleClose2}>
           <Modal.Header closeButton>
             <Modal.Title>Join us</Modal.Title>
@@ -338,7 +340,7 @@ function Nvabarcomp() {
            
 
 
-
+          {/* navbar starts here */}
   <div className="wrapper">
  
     <div className="top_nav">
@@ -352,7 +354,7 @@ function Nvabarcomp() {
       <div className="right">
         <ul>
           <li className='d-none d-lg-block'><Link href="/service">Services</Link></li>
-          <li className='d-none d-lg-block'><Link href="/">Support</Link></li>
+          <li className='d-none d-lg-block'><Link href="/support">Support</Link></li>
           {
             authenticated ? <>
             <li className='d-none d-lg-block'><Link href='/user/orders'>My orders</Link></li>

@@ -22,7 +22,7 @@ axios.defaults.baseURL = 'https://naissa-api.herokuapp.com'
 
 
 
-
+//get site setting
 axios.get('/user/setting')
   .then(res => {
     store.dispatch({
@@ -34,7 +34,7 @@ axios.get('/user/setting')
   export let  socket
 
 function Layout({children,title,description,img,setting ,url}) {
-  
+  //authenticate user
   useEffect(() => {
     if (token) {
 
@@ -84,6 +84,7 @@ function Layout({children,title,description,img,setting ,url}) {
 
   const { user, authenticated } = useSelector(state => state.auth)
   const dispatch = useDispatch()
+  //set socket
   useEffect(() => {
     if (authenticated) {
       let loggedInSocket = user.username
@@ -106,7 +107,8 @@ function Layout({children,title,description,img,setting ,url}) {
     }
 
   }, [authenticated])
-
+  
+  //get new message notification
   useEffect(() => {
 
     if (authenticated) {

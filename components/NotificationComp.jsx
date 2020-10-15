@@ -23,7 +23,7 @@ export default function NotificationComp() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  //get unread notification and count
   useEffect(() => {
     if(notification.length >0){
       let length = notification.filter(not=>not.isseen == false)
@@ -35,14 +35,14 @@ export default function NotificationComp() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+//rote to push user wen click in notification
   let handlePath=(not)=>{
       handleClose()
       if(not.path.length > 0){
         router.push(not.path)
       }
   }
-
+  //mark notification seen
   let handleSeen=()=>{
     
     if(unseenList.length > 0){

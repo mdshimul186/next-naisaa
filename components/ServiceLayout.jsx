@@ -10,9 +10,7 @@ function ServiceLayout({title,children}) {
 
     const router = useRouter()
     
-    
-
-    let history = useHistory()
+    //set route as category
      useEffect(() => {
          if(router.asPath.split('/')[2]){
              setroute(router.asPath.split('/')[2])
@@ -22,6 +20,7 @@ function ServiceLayout({title,children}) {
        
      }, [router.asPath])
 
+     //get all category
   useEffect(() => {
    axios.get('/category/get')
    .then(res=>{
@@ -29,6 +28,7 @@ function ServiceLayout({title,children}) {
    })
   }, [])
 
+  //push user when a category is selected
   let handlePush=(e)=>{
       if(e.target.value === 'all'){
           
@@ -37,6 +37,7 @@ function ServiceLayout({title,children}) {
         router.push(`/categories/${e.target.value}`)
       }
   }
+  //searcg gig acording to category
   let handleSearch=()=>{
       if(route === 'service'){
         if(query.length >0){

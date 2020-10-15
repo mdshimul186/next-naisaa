@@ -60,11 +60,11 @@ export default class Checkout extends React.Component {
         // NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!
         return (
             <div  style={{margin:"30px"}}>
-            <div style={{display:'flex', justifyContent:"space-around",width:"50%"}}>
+            <div style={{display:'flex', justifyContent:"space-around"}}>
                 <p>Total:</p><h5>{this.props.price } $</h5>
             </div>
-            <div style={{margin:"30px"}}>
-            <PaypalExpressBtn style={{size:"large",color:"blue",shape:"rect",labe:"checkout"}} env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+            <div style={{textAlign:"center"}}>
+            <PaypalExpressBtn style={{size:"medium",color:"blue",shape:"rect",label:"checkout"}} env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
             </div>
             </div>
         );

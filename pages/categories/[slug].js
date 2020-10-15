@@ -21,11 +21,11 @@ function CatService({seo}) {
  const [loadmore, setLoadmore] = useState(false)
  const [showloadmore, setShowLoadmore] = useState(false)
     const [page, setPage] = useState(0)
-    //const [seo, setseo] = useState({})
+    
 
 
 
- //let text = history.location.search.split('=')[1] || ''
+ //filter gig according to category and page
  let text =  search || ''
  let fetchGig=()=>{
      
@@ -76,7 +76,7 @@ function CatService({seo}) {
         <Layout 
         title={seo && seo.seotitle} 
         description={seo && seo.seometa} 
-        img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'>
+        img='/siteimg.png'>
         <ServiceLayout title=''>
         {
             load ? <CircularProgress style={{margin:"10px auto"}} /> :
@@ -105,7 +105,6 @@ export async function getServerSideProps(context){
     let slug = context.params.slug
    let res = await axios.get(`/gig/get/${slug}?search=${text}&page=0`)
  
-    
 
    return {
        props: {seo:res.data.gig.length > 0 && res.data.gig[0].category.seo},

@@ -11,7 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 function OrderProfile() {
     const [orderlist, setOrderlist] = useState([])
     const [load, setLoad] = useState(false)
-    const {user} = useSelector(state=>state.auth)
+    const {user,authenticated} = useSelector(state=>state.auth)
     useEffect(() => {
         setLoad(true)
        axios.get('/order/get')
@@ -26,7 +26,7 @@ function OrderProfile() {
         <ProfileLayout title="Orders">
 
         {
-            load ?<div  style={{textAlign:"center"}}> <CircularProgress /></div> :
+            !authenticated? <p>Not authorized</p>:  load ?<div  style={{textAlign:"center"}}> <CircularProgress /></div> :
             orderlist.length>0 ? orderlist.map((order,index)=>{
                 return  <Link  key={index} href={`/orderdetails/${order._id}`}><a>
                         <div className='list_wrapper' style={{display:"flex",justifyContent:"space-around"}}>

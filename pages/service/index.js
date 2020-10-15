@@ -25,7 +25,7 @@ function Allgigs() {
 
     let text = search || ''
 
-
+    //getting all gig by search and page
     let fetchGig = () => {
 
         axios.get(`/gig/get?search=${text}&page=${page}`)
@@ -46,7 +46,7 @@ function Allgigs() {
 
 
 
-
+    //get gigs without search text 
     useEffect(() => {
       
         setload(true)

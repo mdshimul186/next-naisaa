@@ -67,7 +67,7 @@ export default function AdminLayout() {
     setValue(newValue);
   };
   const [access, setAccess] = useState(false)
-
+  //---check authentication to access this route
   useEffect(() => {
    if(authenticated){
      if(user.role == 'admin'){

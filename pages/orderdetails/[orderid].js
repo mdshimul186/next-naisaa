@@ -67,14 +67,15 @@ function OrderDetails() {
     const [sendfileprogress, setsendfileprogress] = useState(false)
 
 
-    const { user ,setting} = useSelector(state => state.auth)
+    const { user, setting } = useSelector(state => state.auth)
     const router = useRouter()
-    const { orderid} = router.query
+    const { orderid } = router.query
 
 
     const classes = useStyles();
     let lastmsgref = useRef()
 
+    //scroll to bottom when a new message is sent or received
     useEffect(() => {
         if (lastmsgref.current) {
             lastmsgref.current.scrollIntoView({
@@ -87,12 +88,11 @@ function OrderDetails() {
 
     const handleClose = () => {
         setShow(false)
-
-
     };
 
     const handleShow = () => setShow(true);
 
+        //send review to this gig
     let sendReview = () => {
         let newReview = {
             reviewtext: review,
@@ -106,7 +106,7 @@ function OrderDetails() {
                 if (res.status == 200) {
 
                     setOrder(res.data.order)
-                   
+
                     handleClose()
                     setReview('')
                 }
@@ -115,6 +115,7 @@ function OrderDetails() {
 
     }
 
+    //send file in message
     let handlefile = (file) => {
         if (file) {
             setsendfileprogress(true)
@@ -131,17 +132,19 @@ function OrderDetails() {
         }
     }
 
+    //get order data
     useEffect(() => {
         axios.get('/order/single/' + orderid)
             .then(res => {
                 setMsgList(res.data.msg)
-              
+
                 setGig(res.data.gig)
                 setOrder(res.data.order)
                 setCount(res.data.count);
             })
     }, [orderid])
 
+    //send text message
     let sendMsg = () => {
         setsendmsgprogress(true)
         let newMsg = {
@@ -151,7 +154,7 @@ function OrderDetails() {
         axios.put(`/order/message/${orderid}`, newMsg)
             .then(res => {
                 let last = res.data.msg[res.data.msg.length - 1]
-               
+
 
                 setMsgList(res.data.msg)
                 setMsg('')
@@ -160,6 +163,7 @@ function OrderDetails() {
             })
     }
 
+    //press enter to send message
     let handleKey = (e) => {
 
         if (e.keyCode === 13) {
@@ -168,174 +172,171 @@ function OrderDetails() {
         }
     }
 
-
+    //path to download file
     let handleDownload = (msg) => {
         if (msg.msgtype === 'file') {
             window.open(msg.url)
         }
 
     }
+    //realtime message
+    useEffect(() => {
 
-     useEffect(() => {
+        socket &&
+            socket.on('newordersms', data => {
+                if (data) {
+                    setMsgList([...msgList, data])
 
-         socket &&
-             socket.on('newordersms', data => {
-                 if (data) {
-                    
-                   
-                     setMsgList([...msgList, data])
-                    
+                }
 
-                 }
-
-             })
+            })
 
 
-     }, [socket, msgList])
+    }, [socket, msgList])
     return (
         <Layout
-        title={`Order for ${gig && gig.title}`}
-        description={setting.general && setting.general.meta}  
-        img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'
+            title={`Order for ${gig && gig.title}`}
+            description={setting.general && setting.general.meta}
+            img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'
         >
-        <div className='service_wrapper'>
+            <div className='service_wrapper'>
 
-          
 
-            <Modal
-                show={show}
-                onHide={handleClose}
-                backdrop="static"
-                keyboard={false}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Contact</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div class="comment-creator-box">
-                        <textarea value={review} onChange={(e) => setReview(e.target.value)} placeholder='write your review..' name="comment-box" id="comment-box"></textarea>
+
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Contact</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div class="comment-creator-box">
+                            <textarea value={review} onChange={(e) => setReview(e.target.value)} placeholder='write your review..' name="comment-box" id="comment-box"></textarea>
+                            <div>
+                                <Box component="fieldset" mb={3} borderColor="transparent">
+                                    <Typography component="legend">Select score</Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+                                    <button onClick={() => sendReview()} class="submit-button">Submit</button>
+                                </Box>
+
+                            </div>
+                        </div>
+                    </Modal.Body>
+
+                </Modal>
+
+
+
+
+
+
+
+
+
+                <div className='row'>
+                    <div className='col-lg-8 sm-12 orderdeatils'>
                         <div>
-                            <Box component="fieldset" mb={3} borderColor="transparent">
-                                <Typography component="legend">Select score</Typography>
-                                <Rating
-                                    name="simple-controlled"
-                                    value={value}
-                                    onChange={(event, newValue) => {
-                                        setValue(newValue);
-                                    }}
-                                />
-                                <button onClick={() => sendReview()} class="submit-button">Submit</button>
-                            </Box>
+                            <h3 >Order for {gig && gig.title} ({order.status == 'accept' ? "active" : order.status})</h3><hr></hr>
 
+                            <p>Webdesign and development</p>
                         </div>
-                    </div>
-                </Modal.Body>
-
-            </Modal>
 
 
-
-
-
-
-
-
-
-            <div className='row'>
-                <div className='col-lg-8 sm-12 orderdeatils'>
-                    <div>
-                        <h3 >Order for {gig && gig.title} ({order.status == 'accept' ? "active" : order.status})</h3><hr></hr>
-
-                        <p>Webdesign and development</p>
-                    </div>
-
-
-                    {
-                        order.status == "delivered" && <div style={{ border: "1px solid gray", padding: "25px 15px", margin: "20px 0" }}>
-                            <Typography variant='body'>
-                                Admin marked your order delivered
+                        {
+                            order.status == "delivered" && <div style={{ border: "1px solid gray", padding: "25px 15px", margin: "20px 0" }}>
+                                <Typography variant='body'>
+                                    Admin marked your order delivered
                     </Typography>
-                            <Button onClick={() => handleShow()} style={{ position: "absolute", right: "25px" }} variant='outlined'>Accept</Button>
+                                <Button onClick={() => handleShow()} style={{ position: "absolute", right: "25px" }} variant='outlined'>Accept</Button>
+                            </div>
+                        }
+
+                        <div>
+
+                            <section class="msger">
+                                <header class="msger-header">
+                                    <div class="msger-header-title">
+                                        Chat
                         </div>
-                    }
-
-                    <div>
-
-                        <section class="msger">
-                            <header class="msger-header">
-                                <div class="msger-header-title">
-                                    Chat
-                        </div>
-                                <div class="msger-header-options">
-                                    <span>{chatload && <CircularProgress style={{ width: "20px", header: "20px" }} />}</span>
-                                </div>
-                            </header>
+                                    <div class="msger-header-options">
+                                        <span>{chatload && <CircularProgress style={{ width: "20px", header: "20px" }} />}</span>
+                                    </div>
+                                </header>
 
 
-                            <main class="msger-chat">
+                                <main class="msger-chat">
 
 
+                                    {
+                                        msgList.length > 0 && msgList.map((msg, index) => {
+                                            const lastmessage = msgList.length - 1 === index
+                                            return <div key={index} ref={lastmessage ? lastmsgref : null}><MessageList
+                                                className='message-list'
+                                                lockable={true}
+                                                toBottomHeight={'100%'}
+                                                onClick={() => handleDownload(msg)}
+                                                dataSource={[
+                                                    {
+                                                        position: user.username == msg.username ? 'right' : 'left',
+                                                        type: msg.msgtype,
+                                                        text: msg.msg,
+                                                        title: msg.username,
+
+                                                        date: new Date(msg.date),
+
+                                                    }
+                                                ]} /></div>
+                                        })
+                                    }
+
+
+                                </main>
                                 {
-                                    msgList.length > 0 && msgList.map((msg, index) => {
-                                        const lastmessage = msgList.length - 1 === index
-                                        return <div key={index} ref={lastmessage ? lastmsgref : null}><MessageList
-                                            className='message-list'
-                                            lockable={true}
-                                            toBottomHeight={'100%'}
-                                            onClick={() => handleDownload(msg)}
-                                            dataSource={[
+                                    order.status !== 'finished' && <div>
+                                        <Paper component="form" className={classes.root}>
+                                            <label htmlFor="icon-button-file">
+                                                <input onChange={(e) => handlefile(e.target.files[0])} style={{ display: "none" }} id="icon-button-file" type="file" />
+                                                <IconButton color="primary" aria-label="upload picture" component="span">
+                                                    {
+                                                        sendfileprogress ? <CircularProgress style={{ width: "30px", height: "30px" }} /> : <AttachFileIcon />
+                                                    }
+
+                                                </IconButton>
+                                            </label>
+                                            <Divider className={classes.divider} orientation="vertical" />
+                                            <form className={classes.input} onSubmit={(e) => e.preventDefault()}>
+                                                <InputBase
+                                                    className={classes.input}
+                                                    fullWidth
+                                                    placeholder="Type here ..."
+                                                    inputProps={{ 'aria-label': 'search google maps' }}
+                                                    value={msg}
+                                                    onChange={(e) => setMsg(e.target.value)}
+                                                    onKeyDown={(e) => { handleKey(e) }}
+                                                />
+                                            </form>
+                                            <Divider className={classes.divider} orientation="vertical" />
+                                            <IconButton onClick={() => sendMsg()} className={classes.iconButton} >
                                                 {
-                                                    position: user.username == msg.username ? 'right' : 'left',
-                                                    type: msg.msgtype,
-                                                    text: msg.msg,
-                                                    title: msg.username,
-
-                                                    date: new Date(msg.date),
-
-                                                }
-                                            ]} /></div>
-                                    })
-                                }
-
-
-                            </main>
-                            {
-                                order.status !== 'finished' && <div>
-                                    <Paper component="form" className={classes.root}>
-                                        <label htmlFor="icon-button-file">
-                                            <input onChange={(e) => handlefile(e.target.files[0])} style={{ display: "none" }} id="icon-button-file" type="file" />
-                                            <IconButton color="primary" aria-label="upload picture" component="span">
-                                                {
-                                                    sendfileprogress ? <CircularProgress style={{ width: "30px", height: "30px" }} /> : <AttachFileIcon />
+                                                    sendmsgprogress ? <CircularProgress style={{ width: "30px", height: "30px" }} /> : <SendIcon style={{ color: "green" }} />
                                                 }
 
                                             </IconButton>
-                                        </label>
-                                        <Divider className={classes.divider} orientation="vertical" />
-                                        <form className={classes.input} onSubmit={(e) => e.preventDefault()}>
-                                            <InputBase
-                                                className={classes.input}
-                                                fullWidth
-                                                placeholder="Type here ..."
-                                                inputProps={{ 'aria-label': 'search google maps' }}
-                                                value={msg}
-                                                onChange={(e) => setMsg(e.target.value)}
-                                                onKeyDown={(e) => { handleKey(e) }}
-                                            />
-                                        </form>
-                                        <Divider className={classes.divider} orientation="vertical" />
-                                        <IconButton onClick={() => sendMsg()} className={classes.iconButton} >
-                                            {
-                                                sendmsgprogress ? <CircularProgress style={{ width: "30px", height: "30px" }} /> : <SendIcon style={{ color: "green" }} />
-                                            }
+                                        </Paper>
 
-                                        </IconButton>
-                                    </Paper>
+                                    </div>
+                                }
 
-                                </div>
-                            }
-
-                        </section>
+                            </section>
 
 
 
@@ -344,33 +345,33 @@ function OrderDetails() {
 
 
 
+                        </div>
                     </div>
-                </div>
-                <div style={{ backgroundColor: "white", height: "100%", padding: "9px", borderRadius: "5px" }} className='col-lg-3 sm-12 orderdetails_sidebar'>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <div className="reviewsstar">
-                            <Rating size="small" name="half-rating-read" value={gig && Math.round((gig.star / count) * 10) / 10} precision={0.1} readOnly />
-
-                            <span>({count})</span>
-                        </div>
-                        <div style={{ marginRight: "0" }} className="product-price">${gig && gig.price}.00</div>
-                    </div><hr></hr>
-
-
-                    <div >
+                    <div style={{ backgroundColor: "white", height: "100%", padding: "9px", borderRadius: "5px" }} className='col-lg-3 sm-12 orderdetails_sidebar'>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <p>Overall rate</p><h6>{gig && Math.round((gig.star / count) * 10) / 10}</h6>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <p>Reviews</p><h6>{count}</h6>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <p>Time of delivery</p><h6>7 Days</h6>
+                            <div className="reviewsstar">
+                                <Rating size="small" name="half-rating-read" value={gig && Math.round((gig.star / count) * 10) / 10} precision={0.1} readOnly />
+
+                                <span>({count})</span>
+                            </div>
+                            <div style={{ marginRight: "0" }} className="product-price">${gig && gig.price}.00</div>
+                        </div><hr></hr>
+
+
+                        <div >
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <p>Overall rate</p><h6>{gig && Math.round((gig.star / count) * 10) / 10}</h6>
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <p>Reviews</p><h6>{count}</h6>
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <p>Time of delivery</p><h6>7 Days</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </Layout>
     )
 }

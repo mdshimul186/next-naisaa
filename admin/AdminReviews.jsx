@@ -33,11 +33,12 @@ function AdminReviews() {
         setDate('')
     };
     const handleShow = () => setShow(true);
-
+    //get comment box setting
     useEffect(() => {
         setShowReviewBox(setting.showreviewbox);
     }, [setting])
 
+    //edit review
     let handleReview = () => {
 
         let newReview = {
@@ -55,7 +56,7 @@ function AdminReviews() {
 
             })
     }
-
+    //edit comment box setting
     let handleSetting = (e) => {
 
         let newSetting = {
@@ -66,7 +67,7 @@ function AdminReviews() {
                 setShowReviewBox(res.data.setting.showreviewbox);
             })
     }
-
+    //get only pending review
     let handleSettingPending = (e) => {
         if (e.target.checked) {
             axios.get(`/gig/allreview?page=0&&filter=pending`)
@@ -93,7 +94,7 @@ function AdminReviews() {
                 })
         }
     }
-
+    //select review to edit
     let selectReview = (review) => {
         setSelectedReview(review);
         setReviewtext(review.reviewtext)
@@ -103,7 +104,7 @@ function AdminReviews() {
     }
 
  
-
+    //get all active review
     useEffect(() => {
         axios.get(`/gig/allreview?page=${page}&&filter=active`)
         .then(res => {
@@ -115,6 +116,8 @@ function AdminReviews() {
             
         })
     }, [])
+
+    //load according to page
 
     let loadMore = (i) => {
         
@@ -132,7 +135,7 @@ function AdminReviews() {
 
     }
 
-
+    //pagination page count
     let List = []
    
        for(let i = 0;i <= (count/50);i++){
@@ -147,7 +150,7 @@ function AdminReviews() {
     return (
         <div>
 
-
+            {/* edit review */}
             <Modal
                 show={show}
                 onHide={handleClose}
@@ -196,6 +199,7 @@ function AdminReviews() {
                     labelPlacement="start"
                 />
             </div>
+            {/* table to display review */}
             <Table style={{ marginTop: "15px", width: "100%" }} striped bordered hover size="sm">
                 <thead>
                     <tr>
@@ -224,6 +228,7 @@ function AdminReviews() {
 
                 </tbody>
             </Table>
+            {/* pagination */}
             <div style={count>50 ? {display:"block"}:{display:"none"}}>
                
 

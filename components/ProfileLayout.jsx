@@ -27,15 +27,16 @@ function ProfileLayout({title,children}) {
   const [route, setroute] = useState('')
 
 
-    const {user,profile} = useSelector(state=>state.auth)
+    const {user,profile,authenticated} = useSelector(state=>state.auth)
     const dispatch = useDispatch()
     const history = useRouter()
     
-
+  //set dropdown according to route
   useEffect(() => {
     setroute(history.asPath.split('/')[2])
   }, [])
 
+    //save prifile image
     let handlefile=(file)=>{
         if(file){
           setpicuploader(true)
@@ -53,6 +54,7 @@ function ProfileLayout({title,children}) {
         }
     }
 
+      //logging out user
     let logOut=()=>{
         localStorage.removeItem('auth_token_f')
         dispatch({
@@ -64,7 +66,7 @@ function ProfileLayout({title,children}) {
 
     return (
         <Layout>
-        <div className='service_wrapper sm_profile'>
+        {authenticated ? <div className='service_wrapper sm_profile'>
 
         <div className='row m-auto ' >
             <div className='col-lg-2 col-sm-12 mr-0 d-flex justify-content-center align-items-center '>
@@ -135,7 +137,9 @@ function ProfileLayout({title,children}) {
         <div className='mt-4' style={{minHeight:"60vh"}}>
             {children}
         </div>
-        </div>
+        </div>:
+        <p>Not authorized</p>
+        }
         </Layout>
     )
 }

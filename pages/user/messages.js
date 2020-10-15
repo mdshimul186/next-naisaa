@@ -12,7 +12,7 @@ import Link from 'next/link'
 function UserMessages() {
     const [messagelist, setMessageList] = useState([])
 
-    const {user} = useSelector(state => state.auth)
+    const {user,authenticated} = useSelector(state => state.auth)
 
     
 
@@ -20,7 +20,6 @@ function UserMessages() {
         axios.get('/user/getmessages')
         .then(res=>{
             setMessageList(res.data.message)
-            console.log(res.data.message);
         })
     }, [])
 
@@ -40,7 +39,7 @@ function UserMessages() {
     return (
         <ProfileLayout title="Profile">
         {
-            messagelist.length > 0 && messagelist.map((msg,index)=>{
+          !authenticated? <p>Not authorized</p>:  messagelist.length > 0 && messagelist.map((msg,index)=>{
                return <Link href={`/user/chat/${msg.room[msg.room.findIndex(m=> m.username !== user.username)].username}`}>
                <a>
                     <ChatItem

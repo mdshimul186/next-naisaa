@@ -40,6 +40,7 @@ function GigDetails({gigs,count,author}) {
     //         })
     // }, [slug])
 
+    //check authentication to checkout
     let handleCheckout = () => {
         if (authenticated) {
             setCheckout(!checkout)

@@ -33,7 +33,7 @@ function HomePage() {
                   <div className="container">
                     <h2 className="animate__animated animate__fadeInDown">Best Place To Hire Freelancers</h2>
                     <p className="animate__animated animate__fadeInUp">Want to take a shortcut !</p>
-                    <Link style={{ backgroundColor: "#1B8785" }} href="/service" className="btn-get-started scrollto animate__animated animate__fadeInUp"><a>Get Started</a></Link>
+                    <Link style={{ backgroundColor: "#1B8785" }} href="/service" ><a className="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a></Link>
                   </div>
                 </div>
               </div>

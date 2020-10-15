@@ -5,7 +5,7 @@ import axios from 'axios'
 import Rating from '@material-ui/lab/Rating';
 function Gigcard({gig}) {
   const [count, setcount] = useState(0)
-
+  //get review count
   useEffect(() => {
     axios.get('/gig/reviewcount/'+gig._id)
     .then(res=>{
@@ -13,7 +13,7 @@ function Gigcard({gig}) {
     })
   }, [gig])
 
-
+    //trim title
     let string = gig.title
    let length = 50
    let trimmed = string.length > length ?
