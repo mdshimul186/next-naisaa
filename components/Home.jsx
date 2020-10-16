@@ -31,7 +31,7 @@ function HomePage() {
               <div className="carousel-item active" >
                 <div className="carousel-container">
                   <div className="container">
-                    <h2 className="animate__animated animate__fadeInDown">Best Place To Hire Freelancers</h2>
+                    <h1  className="animate__animated animate__fadeInDown">Best Place To Hire Freelancers</h1>
                     <p className="animate__animated animate__fadeInUp">Want to take a shortcut !</p>
                     <Link  href="/service" ><a className="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a></Link>
                   </div>
