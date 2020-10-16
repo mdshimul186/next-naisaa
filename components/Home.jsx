@@ -33,7 +33,7 @@ function HomePage() {
                   <div className="container">
                     <h2 className="animate__animated animate__fadeInDown">Best Place To Hire Freelancers</h2>
                     <p className="animate__animated animate__fadeInUp">Want to take a shortcut !</p>
-                    <Link style={{ backgroundColor: "#1B8785" }} href="/service" ><a className="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a></Link>
+                    <Link  href="/service" ><a className="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a></Link>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps2.png'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps2.png' alt='Place your order'></img>
                   </div>
                   <div className='col-10'>
 
@@ -148,7 +148,7 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps3.png'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps3.png' alt='See the results'></img>
                   </div>
                   <div className='col-10'>
 
@@ -163,7 +163,7 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps4.png'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps4.png' alt='Rate your seller'></img>
                   </div>
                   <div className='col-10'>
 

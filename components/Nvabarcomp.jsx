@@ -346,7 +346,10 @@ function Nvabarcomp() {
     <div className="top_nav">
         <div className="left">
         <i onClick={() => onSetSidebarOpen(!sidebarOpen)} className="fa fa-bars"></i>
+
           <div className="logo"><Link href='/'><a><img style={{maxHeight:"150px"}} src={setting.logoimg} alt='naisaa'></img></a></Link></div>
+
+          
           {/* <div className="search_bar">
               <input type="text" placeholder="Search" />
           </div> */}

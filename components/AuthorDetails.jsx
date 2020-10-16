@@ -36,7 +36,7 @@ function AuthorDetails({ author }) {
                     <p style={{ lineHeight: "8px", margin: "13px", textTransform: "capitalize", fontSize: "17px" }}>Level: <b>{author.sellerstatus}</b></p>
 
                     {
-                        author.status === 'online' && <img src='https://res.cloudinary.com/shimul/raw/upload/v1601312602/w7brwa5q5avzea4v1urz.png'></img>
+                        author.status === 'online' && <img src='/online.png'></img>
                     }
 
 
