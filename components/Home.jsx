@@ -89,7 +89,7 @@ function HomePage() {
                     <div className="about-col">
                       <div className="img">
                         <Link href={`/categories/${category.categoryslug}/`}>
-                          <img src={category.categoryimg} alt="" className="img-fluid" />
+                          <a><img src={category.categoryimg} alt="" className="img-fluid" /></a>
                         </Link>
                       </div>
                       <h2 className="my-3"><Link href={`/categories/${category.categoryslug}`}><a>{category.categoryname}</a></Link></h2>
