@@ -74,10 +74,10 @@ function GigDetails({gigs,count,author}) {
                                 checkout ? <Checkout id={gigs && gigs._id} price={gigs && gigs.price} /> : <>
                                     <div>
                                         <h3 >{gigs && gigs.title}</h3><hr></hr>
-                                        <p>Webdesign and development</p>
+                                        <p>{gigs && gigs.category.categoryname}</p>
                                     </div>
                                     <div>
-                                        <img style={{ maxWidth: "100%" }} src={gigs && gigs.thumbnail}></img>
+                                        <img style={{ maxWidth: "100%" }} src={gigs && gigs.thumbnail} alt={gigs && gigs.title}></img>
                                     </div>
 
                                     <div className='mt-3'>
@@ -144,9 +144,8 @@ function GigDetails({gigs,count,author}) {
 
 export async function getServerSideProps(context){
  
-   let res = await axios.get('https://naissa-api.herokuapp.com/gig/get/single/' + context.params.slug)
+   let res = await axios.get('/gig/get/single/' + context.params.slug)
  
-    
 
     return {
         props: {gigs:res.data.gig,count:res.data.count,author:res.data.author},

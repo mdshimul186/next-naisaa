@@ -197,7 +197,7 @@ function OrderDetails() {
         <Layout
             title={`Order for ${gig && gig.title}`}
             description={setting.general && setting.general.meta}
-            img='https://res.cloudinary.com/shimul/image/upload/v1601878762/fbpost/cropped-naisaa-new-color-2-2.png.png'
+            img='/siteimg.png'
         >
             <div className='service_wrapper'>
 

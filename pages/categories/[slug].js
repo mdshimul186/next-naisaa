@@ -82,7 +82,7 @@ function CatService({seo}) {
             load ? <CircularProgress style={{margin:"10px auto"}} /> :
             gigs.length>0 ? gigs.map((gig,index)=>{
                 return <Gigcard gig={gig} key={index} />
-            }):<div  style={{textAlign:"center"}}><p>No gigs found</p></div>
+            }):<div  style={{textAlign:"center",width:"100%"}}><p >No gigs found</p></div>
         }
             
             <div style={showloadmore ? {display:"block",textAlign:"center"}:{display:"none"}}  className='col-12' >

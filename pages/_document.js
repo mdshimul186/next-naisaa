@@ -10,6 +10,7 @@ class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head >
+		<meta name="google-site-verification" content="3-VR-0_vWxWU48-WbF0MpceZS-KTLziYVQqrIzmMbPs" />
         <link rel="icon" href="/favicon.ico" />
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />

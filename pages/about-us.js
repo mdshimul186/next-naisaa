@@ -14,7 +14,7 @@ function AboutUs() {
             </div>
             <div style={{padding:"8%"}} className='row'>
             <div className='col-lg-6 col-sm-12'>
-                <img src='/gentleman.jpg'></img>
+                <img src='/gentleman.jpg' alt='naisaa author'></img>
             </div>
             <div style={{display:"flex",flexDirection:"column", alignItems:"center",justifyContent:"center"}} className='col-lg-6 col-sm-12 '>
              <div style={{textAlign:"left"}}>
@@ -62,7 +62,7 @@ function AboutUs() {
             </div>
 
             <div className="facts-img">
-              <img src="assets/img/facts-img.png" alt="" className="img-fluid" />
+              <img src="assets/img/facts-img.png" alt="" className="img-fluid" alt='naisaa'/>
             </div>
 
           </div>

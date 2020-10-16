@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 import Avatar from '@material-ui/core/Avatar';
 
@@ -11,10 +11,6 @@ export default function ProfileMenu() {
 
   const {user,profile} = useSelector(state=>state.auth)
   const router = useRouter()
-  const dispatch = useDispatch()
-
-
-
 
 
   return (

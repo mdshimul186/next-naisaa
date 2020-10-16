@@ -97,13 +97,13 @@ function ProfileLayout({title,children}) {
         </div>
         <div className='profile_nav mt-3'>
         <ul>
-        <li><Link href="/user/profile">Dashboard</Link></li>
-        <li><Link href="/user/orders">My Orders</Link></li>
-        <li><Link href="/">My Task</Link></li>
-        <li><Link href="/">My Services</Link></li>
-        <li><Link href="/">Payment</Link></li>
-        <li><Link href="/user/messages">Messages</Link></li>
-        <li><Link href="/user/setting">Setting</Link></li>
+        <li><Link href="/user/profile"><a>Dashboard</a></Link></li>
+        <li><Link href="/user/orders"><a>My Orders</a></Link></li>
+        <li><Link href="/user/my-task"><a>My Task</a></Link></li>
+        <li><Link href="/user/my-services"><a>My Services</a></Link></li>
+        <li><Link href="/user/payment"><a>Payment</a></Link></li>
+        <li><Link href="/user/messages"><a>Messages</a></Link></li>
+        <li><Link href="/user/setting"><a>Setting</a></Link></li>
         <li><button onClick={()=>logOut()} className='btn btn-danger'>Logout</button></li>
      
       </ul>
@@ -122,9 +122,9 @@ function ProfileLayout({title,children}) {
           <option aria-label="None" value="" />
           <option value="profile">Dashboard</option>
                 <option value="orders">My Orders</option>
-                <option value="profile">My Task</option>
-                <option value="profile">My Services</option>
-                <option value="profile">Payment</option>
+                <option value="my-task">My Task</option>
+                <option value="my-services">My Services</option>
+                <option value="payment">Payment</option>
                 <option value="messages">Messages</option>
                 <option value="setting">Setting</option>
                 

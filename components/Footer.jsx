@@ -11,7 +11,7 @@ function Footer() {
         <div className="row">
 
           <div className="col-lg-3 col-md-6 footer-info">
-          <img style={{maxHeight:"150px"}} src={setting.logoimg}></img>
+          <img style={{maxHeight:"150px"}} src={setting.logoimg} alt='naisaa hire freelancer'></img>
             <h6>Company Location</h6>
             <ul  className='footer_address'>
               <li><i className="fa fa-map-marker"></i>Rajshahi,Dhaka,Bangladesh</li>
@@ -40,7 +40,7 @@ function Footer() {
               <li style={{ borderBottom:"0"}}><i className="ion-ios-arrow-right"></i> <Link href="/selling-on-naisaa"><a>Selling on Naisaa</a></Link></li>
               <li style={{ borderBottom:"0"}}><i className="ion-ios-arrow-right"></i> <Link href="/buying-on-naisaa"><a>Buying on Naisaa</a></Link></li>
               <li style={{ borderBottom:"0"}}><i className="ion-ios-arrow-right"></i> <Link href="/terms-and-conditions"><a>Terms of service</a></Link></li>
-              <li style={{ borderBottom:"0"}}><i className="ion-ios-arrow-right"></i> <Link href="/"><a>Thanks for Log In :)</a></Link></li>
+       
             </ul>
 
             
@@ -49,7 +49,7 @@ function Footer() {
 
           <div className="col-lg-3 col-md-6 footer-newsletter">
             <h4>Accept Payments</h4>
-            <img style={{marginBottom:"10px"}} src='https://www.naisaa.com/wp-content/uploads/2019/08/Majoaar-aaCredit-Card-Logo-copy-300x33.jpg'></img>
+            <img style={{marginBottom:"10px"}} src='/payment.jpg' alt='payment method'></img>
             {/* <form action="" method="post">
               <input type="email" name="email" /><input type="submit" value="Subscribe" />
             </form> */}
@@ -69,7 +69,7 @@ function Footer() {
 
     <div className="container">
       <div className="copyright">
-        &copy; Copyright <strong>Naissa</strong>. All Rights Reserved
+        &copy; Copyright <strong>Naisaa</strong>. All Rights Reserved
       </div>
       <div className="credits">
        

@@ -110,11 +110,7 @@ input{
   margin: 0 auto 30px auto;
   color: #fff;
 }
-#intro input {
-  width: 30%;
-  margin: 0 auto 30px auto;
-  color: #fff;
-}
+
 
 @media (min-width: 1024px) {
   #intro p {
@@ -122,13 +118,9 @@ input{
   }
 }
 
-#intro .carousel-fade {
-  overflow: hidden;
-}
 
-#intro .carousel-fade .carousel-inner .carousel-item {
-  transition-property: opacity;
-}
+
+
 
 
 
@@ -138,15 +130,8 @@ input{
   }
 }
 
-#intro .carousel-control-next-icon, #intro .carousel-control-prev-icon {
-  background: none;
-  font-size: 32px;
-  line-height: 1;
-}
 
-#intro .carousel-indicators li {
-  cursor: pointer;
-}
+
 
 #intro .btn-get-started {
   font-family: "Montserrat", sans-serif;
@@ -220,55 +205,7 @@ section {
   background: #f7f7f7;
 }
 
-/*--------------------------------------------------------------
-# Breadcrumbs
---------------------------------------------------------------*/
-.breadcrumbs {
-  padding: 20px 0;
-  background-color: #f7f7f7;
-  min-height: 40px;
-  margin-top: 90px;
-}
 
-
-
-.breadcrumbs h2 {
-  font-size: 24px;
-  margin-bottom: 0;
-  font-weight: 400;
-}
-
-.breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-}
-
-.breadcrumbs ol li + li {
-  padding-left: 10px;
-}
-
-.breadcrumbs ol li + li::before {
-  display: inline-block;
-  padding-right: 10px;
-  color: #6c757d;
-  content: "/";
-}
-
-@media (max-width: 768px) {
-  .breadcrumbs .d-flex {
-    display: block !important;
-  }
-  .breadcrumbs ol {
-    display: block;
-  }
-  .breadcrumbs ol li {
-    display: inline-block;
-  }
-}
 
 /* Featured Services Section
 --------------------------------*/
@@ -436,15 +373,9 @@ section {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
-}
-
-#services .title a {
   color: #111;
 }
 
-#services .box:hover .title a {
-  color: #1B8785;
-}
 
 #services .description {
   font-size: 14px;
@@ -820,7 +751,7 @@ section {
   
 }
 
-
+/* ---gig card--- */
 .product-card {
   width: 250px;
   position: relative;
@@ -937,7 +868,6 @@ section {
 
 .reviews span{
   
-
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     margin-left: 5px;
@@ -1071,7 +1001,7 @@ flex-direction: column;
 
 
 
-
+/* -----navbar--------- */
 
 
 .wrapper{
@@ -1322,7 +1252,7 @@ color: #999;
 
 
 
-
+/* ----gig search jumbotron section------------- */
 
 
 form {
@@ -1579,7 +1509,7 @@ form .inner-form .choices[data-type*="select-one"].is-open:after {
 
 
 
-
+/* ------------messenger section------------ */
 
 :root {
   --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);

@@ -17,7 +17,7 @@ function BuyingOnNaissa() {
               <div className='contact_form' style={{width:"60%",margin:"0 auto",textAlign:"center",boxShadow:"3px 3px 3px #ccc", padding:"10px",backgroundColor:"white"}}>
                   <h5>Request A Custom Offers</h5>
                   <p>Too busy to browse for services? Just ask for what you need done, set your delivery time, budget, and send custom offers straight to the seller  inbox.</p>
-                  <img src='/Custom-offers.png'></img>
+                  <img src='/Custom-offers.png' alt='custom offer'></img>
               </div>
             </div>
             <div style={{backgroundImage:`url(/buying.jpg)`,backgroundSize:"cover",backgroundPosition:"center"}}>

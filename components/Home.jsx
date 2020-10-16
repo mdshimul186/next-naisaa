@@ -89,7 +89,7 @@ function HomePage() {
                     <div className="about-col">
                       <div className="img">
                         <Link href={`/categories/${category.categoryslug}/`}>
-                          <img src={category.categoryimg} alt="" className="img-fluid" />
+                          <a><img src={category.categoryimg} alt={category.categoryname} className="img-fluid" /></a>
                         </Link>
                       </div>
                       <h2 className="my-3"><Link href={`/categories/${category.categoryslug}`}><a>{category.categoryname}</a></Link></h2>
@@ -121,11 +121,11 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='https://www.naisaa.com/wp-content/uploads/2020/07/asf.jpg'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps1.jpg' alt='Review sellers profile'></img>
                   </div>
                   <div className='col-10'>
 
-                    <h4 className="title"><a href="">Review sellers profile</a></h4>
+                    <h4 className="title">Review sellers profile</h4>
                     <p className="description">Check out a seller rating before place your order, reviews from previous buyers and read about the areas they specialise in, so you can be confident they’re a good match.</p>
                   </div>
                 </div>
@@ -135,11 +135,11 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='https://www.naisaa.com/wp-content/uploads/2020/07/asgsdg-1.png'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps2.png'></img>
                   </div>
                   <div className='col-10'>
 
-                    <h4 className="title"><a href="">Place your order</a></h4>
+                    <h4 className="title">Place your order</h4>
                     <p className="description">Select a service you need, you can add extra service for more option, and place the order. If the seller is unable to fulfil your order, you’ll get an automatic refund.</p>
                   </div>
                 </div>
@@ -148,11 +148,11 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='https://www.naisaa.com/wp-content/uploads/2020/07/sd.png'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps3.png'></img>
                   </div>
                   <div className='col-10'>
 
-                    <h4 className="title"><a href="">See the results</a></h4>
+                    <h4 className="title">See the results</h4>
                     <p className="description">The naisaa guarantee is for all sellers to start delivering order within the delivery time of your order. You’ll get high quality and professional work flowing to your offer.</p>
                   </div>
                 </div>
@@ -163,11 +163,11 @@ function HomePage() {
               <div className="col-lg-6 col-md-6 box">
                 <div className='row'>
                   <div className='col-2'>
-                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='https://www.naisaa.com/wp-content/uploads/2020/07/customer-rate-pngrepo-com-1.png'></img>
+                    <img style={{ maxWidth: "120px", height: '120px', objectFit: "contain" }} src='/4steps4.png'></img>
                   </div>
                   <div className='col-10'>
 
-                    <h4 className="title"><a href="">Rate your seller</a></h4>
+                    <h4 className="title">Rate your seller</h4>
                     <p className="description">When you’re done, then leave a feedback to your seller profile. Reviews are really important on Naisaa to help buyers like you find the right seller for their needs.</p>
                   </div>
                 </div>
@@ -228,9 +228,7 @@ You don’t need to deliver any products , We will build your website and also u
 
             </div>
 
-            <div className="facts-img">
-              <img src="assets/img/facts-img.png" alt="" className="img-fluid" />
-            </div>
+            
 
           </div>
         </section>
@@ -246,7 +244,7 @@ You don’t need to deliver any products , We will build your website and also u
               </div>
             </div>
             <div className='col-lg-4 text-center'>
-              <a className="cta-btn" href="#">Hire a freelancer</a>
+              <Link  href="/service"><a className="cta-btn">Hire a freelancer</a></Link>
             </div>
           </div>
         </section>
