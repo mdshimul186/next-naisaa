@@ -18,7 +18,9 @@ if (!ISSERVER) {
   token = window.localStorage.getItem('auth_token_f')
 }
 //axios.defaults.baseURL = 'http://localhost:5000'
-axios.defaults.baseURL = 'https://naissa-api.herokuapp.com'
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
+
+
 
 
 
@@ -94,7 +96,7 @@ function Layout({children,title,description,img,setting ,url,footer}) {
         secure: true,
         rejectUnauthorized: false
       }
-      socket = io('https://naissa-api.herokuapp.com', options)
+      socket = io(process.env.NEXT_PUBLIC_API_URL, options)
 
 
       socket.emit('come_online', loggedInSocket)
