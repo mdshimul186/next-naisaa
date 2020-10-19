@@ -167,9 +167,9 @@ function Nvabarcomp() {
         <h4 onClick={() => onSetSidebarOpen(!sidebarOpen)}>X</h4>
         <ul >
               <li ><Link href="/"><a>Home</a></Link></li>
-              <li><Link href="/5f6a3fa93e214c001779744e/gigs"><a>Website design and development</a></Link></li>
-              <li><Link href="/5f6a405d3e214c001779744f/gigs"><a>Website customization</a></Link></li>
-              <li><Link href="/5f6a40723e214c0017797450/gigs"><a>Graphic design</a></Link></li> 
+              <li><Link href="/categories/Website-Design-and-Development"><a>Website design and development</a></Link></li>
+              <li><Link href="/categories/Website-Customization"><a>Website customization</a></Link></li>
+              <li><Link href="/categories/Graphic-Design"><a>Graphic design</a></Link></li> 
               {
                 authenticated && <li><Link href='/user/orders'><a>My orders</a></Link></li>
               }            
