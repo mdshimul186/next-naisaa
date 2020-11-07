@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { Avatar, Typography, Button } from '@material-ui/core'
 import { setToast } from './ToastMsg'
@@ -9,13 +9,13 @@ function AuthorDetails({ author }) {
     const dispatch = useDispatch()
     const { authenticated, user } = useSelector(state => state.auth)
 
-    let history = useHistory()
+    const router = useRouter()
     let handleMessage = () => {
         if (authenticated) {
             if (author.username == user.username) {
                 return setToast("You can't message yourself", 'error')
             } else {
-                history.push(`/user/chat/${author.username}`)
+                router.push(`/user/chat/${author.username}`)
             }
 
         } else {
