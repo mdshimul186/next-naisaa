@@ -1,0 +1,10 @@
+urlset{
+    padding: 10px;
+}
+url{
+    display: block;
+    border-bottom: 1px solid #ccc;
+    padding: 7px 0;
+    font-weight: 500;
+    color: rgb(58, 58, 58);
+}

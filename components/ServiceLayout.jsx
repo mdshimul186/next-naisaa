@@ -13,11 +13,12 @@ function ServiceLayout({title,children}) {
     //set route as category
      useEffect(() => {
          if(router.asPath.split('/')[2]){
-             setroute(router.asPath.split('/')[2])
+            //console.log(router.asPath.split('/')[2].split('?')[0]);
+             setroute(router.asPath.split('/')[2].split('?')[0])
          }else{
-             setroute('service')
+             setroute('all')
          }
-       
+         
      }, [router.asPath])
 
      //get all category
